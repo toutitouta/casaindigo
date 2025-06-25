@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Disponibilités du gîte</title>
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/icalendar@6.1.8/index.global.min.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    #calendar { max-width: 900px; margin: auto; }
+  </style>
+</head>
+<body>
+
+  <h1>Disponibilités du gîte</h1>
+  <p>Ce calendrier est automatiquement synchronisé avec Airbnb.</p>
+  <div id="calendar"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        plugins: [ 'icalendarPlugin' ],
+        events: {
+          url: 'https://www.airbnb.fr/calendar/ical/51614828.ics?s=e5caf3d430d8ba49fbabbf5ad29f3381', // ← ton lien ici
+          format: 'ics'
+        },
+        eventColor: '#ff6666',
+        eventTextColor: '#fff',
+        loading: function(isLoading) {
+          if (isLoading) {
+            console.log('Chargement en cours...');
+          } else {
+            console.log('Chargement terminé');
+          }
+        }
+      });
+
+      calendar.render();
+    });
+  </script>
+
+</body>
+</html>
