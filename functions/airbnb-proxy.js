@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 exports.handler = async function(event, context) {
-  const AIRBNB_ICAL_URL = "https://www.airbnb.com/calendar/ical/TON_ID.ics?s=TON_TOKEN"; // ← remplace ici !
+  const AIRBNB_ICAL_URL = "https://www.airbnb.fr/calendar/ical/51614828.ics?s=e5caf3d430d8ba49fbabbf5ad29f3381"; // ← remplace ici !
 
   try {
     const response = await fetch(AIRBNB_ICAL_URL);
